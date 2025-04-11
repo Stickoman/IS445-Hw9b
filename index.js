@@ -22,6 +22,22 @@ app.post("/ex1", (req, res) => {
     res.send({ message });
 });
 
+app.get("/ex2", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "ex2.html"));
+});
+
+app.post("/api/countries", (req, res) => {
+    const { name, countries } = req.body;
+
+    if (!name || !Array.isArray(countries)) {
+        return res.status(400).json({ error: "Invalid data. 'name' and 'countries' (array) are required." });
+    }
+
+    const numberOfCountries = countries.length;
+    const message = `${name}, you've visited ${numberOfCountries} countries.`;
+
+    res.json({ message });
+});
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
