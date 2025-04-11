@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const port = 3000;
+
+let articles = [];
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -38,6 +41,26 @@ app.post("/api/countries", (req, res) => {
 
     res.json({ message });
 });
+
+app.get("/ex3", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "ex3.html"));
+});
+
+app.post("/ex3", (req, res) => {
+    const { title, content } = req.body;
+    if (!title || !content) {
+        return res.status(400).send({ message: "Title and content are required." });
+    }
+
+    const newId = articles.length > 0 ? Math.max(...articles.map(article => article.id)) + 1 : 1;
+    const newArticle = { id: newId, title, content };
+
+    articles.push(newArticle);
+
+    const message = `Article "${title}" has been added with ID ${newId}.`;
+    res.send({ message });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
