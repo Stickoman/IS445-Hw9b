@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 1</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<a href="/">Link to Start Page</a>
+<h2>Asher's Sample Form</h2>
+<form id="orderForm">
+    <label>Name:</label>
+    <input type="text" name="name" required><br><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" required><br><br>
+
+    <label>Payment Type:</label><br>
+    <input type="radio" name="payment" value="Cash"> Cash<br>
+    <input type="radio" name="payment" value="Credit Card"> Credit Card<br>
+    <input type="radio" name="payment" value="Google Pay"> Google Pay<br>
+    <input type="radio" name="payment" value="Apple Pay"> Apple Pay<br><br>
+
+    <input type="checkbox" name="promo"> Sign me up for special promotions<br><br>
+
+    <label>Preferred Location:</label>
+    <select name="location">
+        <option>Orange County</option>
+        <option>Los Angeles</option>
+        <option>San Diego</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Cancel</button>
+</form>
+
+<div id="confirmation" style="margin-top: 20px; color: green;"></div>
+
+<script src="/ex1.js"></script>
+</body>
+</html>
